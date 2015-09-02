@@ -1,30 +1,32 @@
-library(shiny)
-
 shinyUI(fluidPage(
-  titlePanel(h1(strong("It's So Shiny"))),
-
+  titlePanel(h1("censusVis")),
   sidebarLayout(
     sidebarPanel(
-      h3(strong("Installation")),
-      p("Shiny is available on CRAN, so you can install it in the usual way from your R console:"),
-      code('install.packages("shiny")'),
-      br(),
-      br(),
-      br(),
-      br(),
-      div(img(src = "bigorb.png", height = 50, width = 50), "shiny is a product of", a("RStudio", href="https://www.rstudio.com/"))
-    ),
-    
-    mainPanel(
-      h1(strong("Introducing Shiny")),
-      p("Shiny is a new package from RStudio that makes it", em("incredibly"), "easy to build interactive web applications with R."),
-      br(),
-      p("For an intro and examples, visit the", a("Shiny Homepage", href="http://shiny.rstudio.com/")),
-      h2(strong("Features")),
-      tags$ul(
-        tags$li("Build useful webapps with only a few lines of code -- no JavaScript required. :("),
-        tags$li("Shiny apps are automatically live")
+      helpText(
+        "Create demographic maps with with information from the 2010 US Census."
+      ),
+      selectInput(
+        inputId = "ethnicity",
+        label = "Choose a variable to display",
+        choices = list(
+          "percent white", 
+          "percent black", 
+          "percent hispanic", 
+          "percent asian"
+        ),
+        selected = "percent asian"
+      ),
+      sliderInput(
+        inputId = "interest",
+        label = "Range of interest:",
+        min = 0,
+        max = 100,
+        value = c(0, 100),
+        ticks = FALSE
       )
-    )
+    ),
+    mainPanel()
   )
+  
+  
 ))
