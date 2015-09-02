@@ -24,12 +24,7 @@ shinyUI(fluidPage(
       )
     ),
     mainPanel(
-      textOutput(
-        outputId = "text1"
-      ),
-      textOutput(
-        outputId = "text2"
-      )
+      plotOutput(outputId = "map")
     )  
   )
 ))
